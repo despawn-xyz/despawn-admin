@@ -8,7 +8,7 @@ use Filament\PluginServiceProvider;
 class DespawnAdminServiceProvider extends PluginServiceProvider
 {
     protected array $resources = [
-        CategoryResource::class
+        CategoryResource::class,
     ];
 
 //    protected array $pages;
