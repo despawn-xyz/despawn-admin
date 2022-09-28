@@ -1,16 +1,16 @@
 <?php
 
-namespace Despawn\Resources;
+namespace Despawn\Filament\Resources;
 
-use App\Models\Category;
+use Despawn\Models\Category;
 use Despawn\Resources\CategoryResource\Pages\EditCategory;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Resources\CategoryResource\Pages\CreateCategory;
-use Resources\CategoryResource\Pages\ListCategories;
+use Despawn\Filament\Resources\CategoryResource\Pages\CreateCategory;
+use Despawn\Filament\Resources\CategoryResource\Pages\ListCategories;
 
 class CategoryResource extends Resource
 {

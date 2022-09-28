@@ -2,7 +2,7 @@
 
 namespace Despawn\Resources\CategoryResource\Pages;
 
-use Despawn\Resources\CategoryResource;
+use Despawn\Filament\Resources\CategoryResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;
 

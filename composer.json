@@ -1,10 +1,10 @@
 {
     "name": "noclip-gg/despawn-admin",
-    "version": "0.0.1",
     "description": "Admin panel for Despawn.gg",
     "type": "library",
     "require": {
-        "filament/filament": "^2.16"
+        "filament/filament": "^2.16",
+        "noclip-gg/despawn-core": "*"
     },
     "license": "propietary",
     "autoload": {

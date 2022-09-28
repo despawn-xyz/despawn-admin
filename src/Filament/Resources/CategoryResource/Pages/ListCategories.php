@@ -1,8 +1,9 @@
 <?php
 
-namespace Resources\CategoryResource\Pages;
+namespace Despawn\Filament\Resources\CategoryResource\Pages;
 
-use Despawn\Resources\CategoryResource;
+
+use Despawn\Filament\Resources\CategoryResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 
