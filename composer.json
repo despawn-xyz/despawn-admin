@@ -11,6 +11,13 @@
             "Despawn\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Despawn\\Providers\\DespawnAdminServiceProvider"
+            ]
+        }
+    },
     "authors": [
         {
             "name": "robertdennis",
