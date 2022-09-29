@@ -2,20 +2,20 @@
 
 namespace Despawn\Filament\Resources;
 
-use Despawn\Filament\Resources\BoardResource\Pages\CreateBoard;
-use Despawn\Filament\Resources\BoardResource\Pages\EditBoard;
-use Despawn\Filament\Resources\BoardResource\Pages\ListBoards;
-use Despawn\Filament\Resources\BoardResource\RelationManagers\ThreadRelationManager;
-use Despawn\Models\Board;
+use Despawn\Filament\Resources\ThreadResource\Pages\CreateThread;
+use Despawn\Filament\Resources\ThreadResource\Pages\EditThread;
+use Despawn\Filament\Resources\ThreadResource\Pages\ListThreads;
+use Despawn\Models\Thread;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use FilamentTiptapEditor\TiptapEditor;
 
-class BoardResource extends Resource
+class ThreadResource extends Resource
 {
-    protected static ?string $model = Board::class;
+    protected static ?string $model = Thread::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-view-boards';
 
@@ -38,20 +38,10 @@ class BoardResource extends Resource
                     ->maxLength(255)
                     ->unique('categories', 'title')
                     ->reactive(),
-                Forms\Components\MarkdownEditor::make('description')
-                    ->maxLength(10_000)
-                    ->disableAllToolbarButtons()
-                    ->enableToolbarButtons([
-                        'bold',
-                        'bulletList',
-                        'edit',
-                        'italic',
-                        'preview',
-                        'strike',
-                    ]),
-                Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'title')
-                    ->label('Category')
+                TiptapEditor::make('body'),
+                Forms\Components\Select::make('board_id')
+                    ->relationship('board', 'title')
+                    ->label('Board')
                     ->searchable()
                     ->required()
             ]);
@@ -80,16 +70,16 @@ class BoardResource extends Resource
     public static function getRelations(): array
     {
         return [
-            ThreadRelationManager::class
+            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => ListBoards::route('/'),
-            'create' => CreateBoard::route('/create'),
-            'edit' => EditBoard::route('/{record}/edit'),
+            'index' => ListThreads::route('/'),
+            'create' => CreateThread::route('/create'),
+            'edit' => EditThread::route('/{record}/edit'),
         ];
     }
 }

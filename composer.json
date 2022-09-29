@@ -4,7 +4,7 @@
     "type": "library",
     "require": {
         "filament/filament": "^2.16",
-        "noclip-gg/despawn-core": "*"
+        "awcodes/filament-tiptap-editor": "^0.3.14"
     },
     "license": "propietary",
     "autoload": {
