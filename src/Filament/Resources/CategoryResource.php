@@ -2,7 +2,6 @@
 
 namespace Despawn\Filament\Resources;
 
-use Despawn\Filament\Resources\BoardResource\Pages\ListBoards;
 use Despawn\Filament\Resources\CategoryResource\Pages\CreateCategory;
 use Despawn\Filament\Resources\CategoryResource\Pages\EditCategory;
 use Despawn\Filament\Resources\CategoryResource\Pages\ListCategories;
@@ -48,7 +47,7 @@ class CategoryResource extends Resource
                         'italic',
                         'preview',
                         'strike',
-                    ])
+                    ]),
             ]);
     }
 
@@ -59,7 +58,7 @@ class CategoryResource extends Resource
                 Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('slug'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                    ->dateTime(),
             ])
             ->filters([
                 //

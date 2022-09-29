@@ -53,7 +53,7 @@ class BoardResource extends Resource
                     ->relationship('category', 'title')
                     ->label('Category')
                     ->searchable()
-                    ->required()
+                    ->required(),
             ]);
     }
 
@@ -64,7 +64,7 @@ class BoardResource extends Resource
                 Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('slug'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                    ->dateTime(),
             ])
             ->filters([
                 //
