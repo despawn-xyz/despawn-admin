@@ -10,7 +10,7 @@ class DespawnAdminServiceProvider extends PluginServiceProvider
 {
     protected array $resources = [
         CategoryResource::class,
-        BoardResource::class
+        BoardResource::class,
     ];
 
     public function configurePackage(\Spatie\LaravelPackageTools\Package $package): void
