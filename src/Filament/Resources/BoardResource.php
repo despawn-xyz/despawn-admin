@@ -2,20 +2,19 @@
 
 namespace Despawn\Filament\Resources;
 
+use Despawn\Filament\Resources\BoardResource\Pages\CreateBoard;
+use Despawn\Filament\Resources\BoardResource\Pages\EditBoard;
 use Despawn\Filament\Resources\BoardResource\Pages\ListBoards;
-use Despawn\Filament\Resources\CategoryResource\Pages\CreateCategory;
-use Despawn\Filament\Resources\CategoryResource\Pages\EditCategory;
-use Despawn\Filament\Resources\CategoryResource\Pages\ListCategories;
-use Despawn\Models\Category;
+use Despawn\Models\Board;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 
-class CategoryResource extends Resource
+class BoardResource extends Resource
 {
-    protected static ?string $model = Category::class;
+    protected static ?string $model = Board::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-view-boards';
 
@@ -48,7 +47,12 @@ class CategoryResource extends Resource
                         'italic',
                         'preview',
                         'strike',
-                    ])
+                    ]),
+                Forms\Components\Select::make('category_id')
+                    ->relationship('category', 'title')
+                    ->label('Category')
+                    ->searchable()
+                    ->required()
             ]);
     }
 
@@ -82,9 +86,9 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListCategories::route('/'),
-            'create' => CreateCategory::route('/create'),
-            'edit' => EditCategory::route('/{record}/edit'),
+            'index' => ListBoards::route('/'),
+            'create' => CreateBoard::route('/create'),
+            'edit' => EditBoard::route('/{record}/edit'),
         ];
     }
 }

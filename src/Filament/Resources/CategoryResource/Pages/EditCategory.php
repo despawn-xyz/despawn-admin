@@ -1,6 +1,6 @@
 <?php
 
-namespace Despawn\Resources\CategoryResource\Pages;
+namespace Despawn\Filament\Resources\CategoryResource\Pages;
 
 use Despawn\Filament\Resources\CategoryResource;
 use Filament\Pages\Actions;
