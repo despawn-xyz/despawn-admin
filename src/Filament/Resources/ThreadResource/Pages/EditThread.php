@@ -2,7 +2,6 @@
 
 namespace Despawn\Filament\Resources\ThreadResource\Pages;
 
-use Despawn\Filament\Resources\BoardResource;
 use Despawn\Filament\Resources\ThreadResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;

@@ -43,7 +43,7 @@ class ThreadResource extends Resource
                     ->relationship('board', 'title')
                     ->label('Board')
                     ->searchable()
-                    ->required()
+                    ->required(),
             ]);
     }
 
@@ -54,7 +54,7 @@ class ThreadResource extends Resource
                 Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('slug'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                    ->dateTime(),
             ])
             ->filters([
                 //

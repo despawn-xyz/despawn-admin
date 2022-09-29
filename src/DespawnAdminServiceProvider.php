@@ -12,7 +12,7 @@ class DespawnAdminServiceProvider extends PluginServiceProvider
     protected array $resources = [
         CategoryResource::class,
         BoardResource::class,
-        ThreadResource::class
+        ThreadResource::class,
     ];
 
     public function configurePackage(\Spatie\LaravelPackageTools\Package $package): void
