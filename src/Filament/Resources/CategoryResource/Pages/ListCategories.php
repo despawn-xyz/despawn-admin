@@ -2,7 +2,6 @@
 
 namespace Despawn\Filament\Resources\CategoryResource\Pages;
 
-
 use Despawn\Filament\Resources\CategoryResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
