@@ -37,17 +37,8 @@ class CategoryResource extends Resource
                     ->maxLength(255)
                     ->unique('categories', 'title')
                     ->reactive(),
-                Forms\Components\MarkdownEditor::make('description')
-                    ->maxLength(10_000)
-                    ->disableAllToolbarButtons()
-                    ->enableToolbarButtons([
-                        'bold',
-                        'bulletList',
-                        'edit',
-                        'italic',
-                        'preview',
-                        'strike',
-                    ]),
+                Forms\Components\Textarea::make('description')
+                    ->maxLength(500),
             ]);
     }
 
