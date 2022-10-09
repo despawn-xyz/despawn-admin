@@ -71,7 +71,7 @@ class BoardResource extends Resource
     public static function getRelations(): array
     {
         return [
-            ThreadRelationManager::class
+            ThreadRelationManager::class,
         ];
     }
 
