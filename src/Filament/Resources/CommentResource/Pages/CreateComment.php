@@ -3,9 +3,8 @@
 namespace Despawn\Filament\Resources\CommentResource\Pages;
 
 use Despawn\Filament\Resources\CommentResource;
-use Despawn\Filament\Resources\ThreadResource;
-use Filament\Resources\Pages\CreateRecord;
 use Despawn\Models\User;
+use Filament\Resources\Pages\CreateRecord;
 
 class CreateComment extends CreateRecord
 {

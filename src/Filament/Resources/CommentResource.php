@@ -2,16 +2,12 @@
 
 namespace Despawn\Filament\Resources;
 
-use Despawn\Filament\Resources\CommentResource\Pages\CreateComment;
-use Despawn\Filament\Resources\CommentResource\Pages\EditComment;
 use Despawn\Filament\Resources\CommentResource\Pages\ListComments;
 use Despawn\Models\Comment;
-use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Model;
 
 class CommentResource extends Resource
@@ -38,7 +34,7 @@ class CommentResource extends Resource
                 Tables\Columns\TextColumn::make('commentable_id'),
                 Tables\Columns\TextColumn::make('commenter_id'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                    ->dateTime(),
             ])
             ->filters([
                 //
