@@ -5,7 +5,6 @@ namespace Despawn\Filament\Resources\RoleResource\Pages;
 use Despawn\Filament\Resources\RoleResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;
-use Despawn\Models\Category;
 
 class EditRole extends EditRecord
 {

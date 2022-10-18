@@ -11,7 +11,6 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Despawn\Models\Category;
 
 class RoleResource extends Resource
 {
@@ -47,7 +46,7 @@ class RoleResource extends Resource
                         Forms\Components\Tabs\Tab::make('Permissions')
                             ->schema(static::permissions())
                             ->visibleOn('edit'),
-                    ])
+                    ]),
             ]);
     }
 
@@ -114,7 +113,7 @@ class RoleResource extends Resource
                 ->helperText('Allows members to delete threads by default.'),
             PermissionToggle::make('View Audit log')
                 ->permissionToggle('view-audit-log')
-                ->helperText('Allows members to view a record of who made which changes in the server')
+                ->helperText('Allows members to view a record of who made which changes in the server'),
         ];
     }
 }
