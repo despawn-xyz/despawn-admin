@@ -2,11 +2,7 @@
 
 namespace Despawn\Filament\Resources\CommentResource\Pages;
 
-
-use Despawn\Filament\Resources\BoardResource;
-use Despawn\Filament\Resources\CategoryResource;
 use Despawn\Filament\Resources\CommentResource;
-use Despawn\Filament\Resources\ThreadResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 
