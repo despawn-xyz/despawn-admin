@@ -12,7 +12,6 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Despawn\Models\Category;
 
 class RoleResource extends Resource
 {
@@ -52,7 +51,7 @@ class RoleResource extends Resource
                         Forms\Components\Tabs\Tab::make('Permissions')
                             ->schema(static::permissions())
                             ->visibleOn('edit'),
-                    ])
+                    ]),
             ]);
     }
 
@@ -81,7 +80,7 @@ class RoleResource extends Resource
     public static function getRelations(): array
     {
         return [
-            UsersRelationManager::class
+            UsersRelationManager::class,
         ];
     }
 
@@ -124,7 +123,7 @@ class RoleResource extends Resource
             PermissionToggle::make('Administrator')
                 ->permissionToggle('administrator')
                 ->helperText('Members with this permission will have every permission and will also bypass any specific permissions.
-                 **This is a dangerous permission to grant.**')
+                 **This is a dangerous permission to grant.**'),
         ];
     }
 }

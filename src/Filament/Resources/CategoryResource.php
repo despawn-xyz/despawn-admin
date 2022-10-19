@@ -48,7 +48,7 @@ class CategoryResource extends Resource
                 Forms\Components\Select::make('allowed_roles')
                     ->searchable()
                     ->getSearchResultsUsing(fn (string $search) => Role::where('title', 'like', "%{$search}%")->limit(50)->pluck('title', 'id'))
-                    ->getOptionLabelsUsing(function($values) {
+                    ->getOptionLabelsUsing(function ($values) {
                         $query = Role::query()->whereIn('id', $values);
 
                         return $query->get()
@@ -62,7 +62,7 @@ class CategoryResource extends Resource
                     ->searchable()
                     ->multiple()
                     ->getSearchResultsUsing(fn (string $search) => User::where('name', 'like', "%{$search}%")->limit(50)->pluck('name', 'id'))
-                    ->getOptionLabelsUsing(function($values) {
+                    ->getOptionLabelsUsing(function ($values) {
                         $query = User::query()->whereIn('id', $values);
 
                         return $query->get()

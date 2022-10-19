@@ -2,14 +2,13 @@
 
 namespace Despawn\Filament\Resources\RoleResource\RelationManagers;
 
-use Couchbase\Role;
+use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
 use Filament\Tables\Actions\AttachAction;
 use Filament\Tables\Actions\DetachAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Resources\Form;
 
 class UsersRelationManager extends RelationManager
 {
@@ -40,7 +39,7 @@ class UsersRelationManager extends RelationManager
                 AttachAction::make(),
             ])
             ->actions([
-                DetachAction::make()
+                DetachAction::make(),
             ]);
     }
 
