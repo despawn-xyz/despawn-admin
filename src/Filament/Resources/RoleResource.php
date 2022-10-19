@@ -6,6 +6,7 @@ use Despawn\Filament\Components\PermissionToggle;
 use Despawn\Filament\Resources\RoleResource\Pages\CreateRole;
 use Despawn\Filament\Resources\RoleResource\Pages\EditRole;
 use Despawn\Filament\Resources\RoleResource\Pages\ListRoles;
+use Despawn\Filament\Resources\RoleResource\RelationManagers\UsersRelationManager;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -35,14 +36,18 @@ class RoleResource extends Resource
                                     ->required()
                                     ->maxLength(255)
                                     ->afterStateUpdated(fn ($state, callable $set) => $set('slug', \Str::slug($state)))
-                                    ->reactive(),
+                                    ->reactive()
+                                    ->helperText('Max value is 255.'),
                                 Forms\Components\TextInput::make('title')
                                     ->required()
                                     ->maxLength(255)
                                     ->unique('roles', 'title', ignoreRecord: true)
-                                    ->reactive(),
+                                    ->reactive()
+                                    ->helperText('Max value is 255'),
                                 Forms\Components\TextInput::make('level')
-                                    ->numeric(),
+                                    ->maxValue(999)
+                                    ->numeric()
+                                    ->helperText('Max value is 999.'),
                             ]),
                         Forms\Components\Tabs\Tab::make('Permissions')
                             ->schema(static::permissions())
@@ -58,6 +63,7 @@ class RoleResource extends Resource
                 Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('level'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
             ])
@@ -75,7 +81,7 @@ class RoleResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            UsersRelationManager::class
         ];
     }
 
@@ -98,7 +104,7 @@ class RoleResource extends Resource
                 ->permissionToggle('manage', \Despawn\Models\Category::class)
                 ->helperText('Allows members to create, edit, delete categories.'),
             PermissionToggle::make('Manage Roles')
-                ->permissionToggle('edit', \Despawn\Models\Role::class)
+                ->permissionToggle('manage', \Despawn\Models\Role::class)
                 ->helperText('Allows members to create, edit, and delete roles.'),
             PermissionToggle::make('View Boards')
                 ->permissionToggle('view', \Despawn\Models\Board::class)
@@ -114,7 +120,11 @@ class RoleResource extends Resource
                 ->helperText('Allows members to delete threads by default.'),
             PermissionToggle::make('View Audit log')
                 ->permissionToggle('view-audit-log')
-                ->helperText('Allows members to view a record of who made which changes in the server')
+                ->helperText('Allows members to view a record of who made which changes in the server'),
+            PermissionToggle::make('Administrator')
+                ->permissionToggle('administrator')
+                ->helperText('Members with this permission will have every permission and will also bypass any specific permissions.
+                 **This is a dangerous permission to grant.**')
         ];
     }
 }

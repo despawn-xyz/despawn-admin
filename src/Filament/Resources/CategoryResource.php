@@ -13,6 +13,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Illuminate\Database\Eloquent\Model;
 
 class CategoryResource extends Resource
 {
@@ -46,15 +47,29 @@ class CategoryResource extends Resource
                     able to view this category.'),
                 Forms\Components\Select::make('allowed_roles')
                     ->searchable()
-                    ->multiple()
                     ->getSearchResultsUsing(fn (string $search) => Role::where('title', 'like', "%{$search}%")->limit(50)->pluck('title', 'id'))
-                    ->getOptionLabelUsing(fn ($value): ?string => Role::find($value)?->title)
+                    ->getOptionLabelsUsing(function($values) {
+                        $query = Role::query()->whereIn('id', $values);
+
+                        return $query->get()
+                            ->mapWithKeys(static fn (Model $record) => [
+                                $record->id => $record->title,
+                            ])->toArray();
+                    })
+                    ->multiple()
                     ->nullable(),
                 Forms\Components\Select::make('allowed_users')
                     ->searchable()
                     ->multiple()
                     ->getSearchResultsUsing(fn (string $search) => User::where('name', 'like', "%{$search}%")->limit(50)->pluck('name', 'id'))
-                    ->getOptionLabelUsing(fn ($value): ?string => User::find($value)?->name)
+                    ->getOptionLabelsUsing(function($values) {
+                        $query = User::query()->whereIn('id', $values);
+
+                        return $query->get()
+                            ->mapWithKeys(static fn (Model $record) => [
+                                $record->id => $record->name,
+                            ])->toArray();
+                    })
                     ->nullable(),
             ]);
     }

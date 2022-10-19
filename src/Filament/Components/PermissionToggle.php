@@ -17,7 +17,6 @@ class PermissionToggle extends Toggle
     {
 
         $this->loadStateFromRelationshipsUsing(static function (Toggle $component, ?bool $state) use ($ability, $model): void {
-            dd($model);
             $role = $component->getRecord();
 
             isset($model) ? $component->state($role->can($ability, $model)) : $component->state($role->can($ability));
